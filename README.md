@@ -1,61 +1,58 @@
 # PetCare
 
-Proyecto tecnológico integrador de Ingeniería de Software, quinto semestre.
-Línea B: gestión de servicios para mascotas.
+Implementación académica para la **Actividad 4 de Diseño de Aplicaciones Web**.
 
-## Idea y propósito
-Aplicación web para conectar propietarios de mascotas con proveedores de veterinaria programada, peluquería, paseo y cuidado temporal. Permite consultar servicios, enviar solicitudes y conocer la respuesta del proveedor.
+**Equipo:** Diego Alejandro Parra Cespedes y Nicolás Chesini Martin.
 
-La información dispersa y la confusión entre solicitar y tener una reserva confirmada son hipótesis que deben contrastarse con usuarios. Una solicitud enviada queda **Pendiente**: no reserva automáticamente un cupo.
+PetCare permite consultar servicios para mascotas, proponer un horario y conocer la respuesta del proveedor. Un envío crea una solicitud **Pendiente**; la cita solo se considera aceptada después de la decisión del proveedor.
 
-## Alcance del MVP
-- Catálogo público con filtros por categoría y zona.
-- Fichas con descripción, especies atendidas, ubicación, proveedor y precio de referencia.
-- Registro de propietarios, inicio y cierre de sesión. Proveedores invitados.
-- Solicitudes con mascota, especie y fecha y hora preferidas futuras.
-- Aceptación o rechazo por el proveedor del servicio; el rechazo exige motivo.
-- Consulta del estado de las solicitudes propias.
-- Creación, edición y desactivación de servicios propios.
+## Estado de esta versión
 
-Se excluyen pagos, chat, geolocalización, reservas automáticas de cupos, reseñas, historias clínicas y urgencias.
+- Código de la interfaz preparado en `docs/` para un hosting estático.
+- Reglas de datos verificadas: 19 comprobaciones aprobadas en un motor JavaScript.
+- Verificación final de esta versión en navegador, publicación pública y video: pendientes.
+- Acceso y registro simulados. No hay usuarios reales, base de datos compartida, pagos ni reservas reales.
 
-## Organización ágil
-Se propone Scrum para el desarrollo incremental y Design Thinking para comprender el problema. El análisis de esta primera entrega no se presenta como un sprint de software ya ejecutado.
+## Abrir y publicar
 
-Cada historia conserva su identificador HU01–HU07, requisito asociado, criterios de aceptación, prioridad e iteración. Las tareas de investigación y preparación se distinguen de las historias de software.
+Para probar localmente, abre `docs` en Visual Studio Code y utiliza Live Server sobre `index.html`. El sitio no necesita Node.js ni un proceso de compilación.
 
-Estados del tablero: Backlog, Por hacer, En curso, En revisión y Terminado. Solo se marca Terminado cuando existe evidencia del cumplimiento; redactar una historia no significa implementarla.
+Antes de publicar, crea la rama **actividad-4-web** desde `main` y sube el contenido de este paquete a su raíz, conservando las carpetas `docs/`, `documentacion/` y `pruebas/`. La rama todavía no se ha creado en GitHub: la conexión permitió leer el repositorio público, pero rechazó la escritura.
 
-## Iteraciones propuestas
-| Iteración | Alcance | Situación |
-| --- | --- | --- |
-| Preparación | Investigación, prototipo, requisitos y evidencias | Validación pendiente |
-| Sprint 1, 5–11 octubre 2026 | HU01 búsqueda y HU02 ficha | Planificado |
-| Sprint 2 | HU03 acceso y HU04 solicitudes | Previsión revisable |
-| Sprint 3 | HU05 respuesta, HU06 seguimiento y HU07 catálogo | Previsión revisable |
+Después: Settings > Pages > Deploy from a branch > rama **actividad-4-web** > carpeta **/docs** > Save. La rama puede publicarse sin fusionarla con `main`. Copia la URL que GitHub muestre al terminar; no confundas esa URL con la del repositorio.
 
-### Plan inicial del Sprint 1
-Objetivo: encontrar servicios del catálogo piloto y consultar sus fichas en una web usable.
+## Documentación del equipo
 
-| Trabajo | Horas persona estimadas |
-| --- | ---: |
-| Refinar criterios y preparar catálogo autorizado | 4 |
-| Preparar proyecto, almacenamiento y carga inicial | 6 |
-| Implementar consulta, filtros y mensajes vacíos | 10 |
-| Implementar ficha y control de servicio inactivo | 6 |
-| Pruebas de aceptación, tamaños y teclado | 7 |
-| Planificación, seguimiento, revisión y retrospectiva | 7 |
-| Total | 40 |
+- [Guía de entrega y publicación](documentacion/Guia_Actividad4.md)
+- [Guion del video dividido entre Diego y Nicolás](documentacion/Guion_video.md)
+- [Verificaciones y pruebas pendientes](documentacion/Verificacion.md)
+- [Planificación original conservada](documentacion/Planificacion_original.md)
 
-Capacidad supuesta: cinco integrantes con ocho horas cada uno. Ajustar a los integrantes y disponibilidad reales.
+## Estructura
 
-Condición de terminado: HU01 y HU02 integradas, criterios cumplidos, revisión por otro integrante, pruebas aprobadas y demostración accesible, sin defectos bloqueantes.
+| Archivo | Responsabilidad |
+| --- | --- |
+| `docs/index.html` y las demás páginas | Entrada, estructura común y destinos de cada recorrido. |
+| `docs/styles.css` | Presentación, tipografía y adaptación móvil. |
+| `docs/modelo.js` | Validaciones, solicitudes, decisiones y servicios. |
+| `docs/app.js` | Presentación de los datos y eventos de la interfaz. |
+| `docs/configuracion.js` | Integrantes y URL del video. |
+| `pruebas/modelo.test.cjs` | Casos del modelo; se ejecutan con Node.js sin dependencias. |
 
-## Responsabilidades
-Product Owner: priorizar y contrastar valor. Scrum Master: facilitar el proceso y hacer visibles impedimentos. Developers: análisis, diseño, implementación y calidad. La asignación nominal debe acordarse con el equipo, de máximo cinco estudiantes.
+Los ejemplos se conservan con `localStorage` en el navegador. No se almacenan correos ni contraseñas. Los datos de navegadores diferentes no se sincronizan. Cambiar de perfil conserva la demostración; Sobre el proyecto > Restablecer ejemplos la reinicia.
 
-## Estado de la evidencia
-Los documentos preparados contienen escenarios simulados, perfiles hipotéticos y prototipos de baja fidelidad. No se atribuyen entrevistas ni pruebas de usabilidad reales sin sus registros. Las metas de rendimiento y usabilidad son objetivos, no resultados medidos. Este repositorio contiene planificación y documentación, no una aplicación implementada.
+La fuente Inter se solicita a Google Fonts; si no carga, se utiliza una fuente del sistema. No se usan fotografías ni textos de plantillas.
 
-## Evidencias para el documento académico
-Incluir captura del tablero, enlace del proyecto, planificación del sprint, registros anonimizados de entrevistas y pruebas reales, y fotografías del prototipo en papel cuando se realicen. No subir contraseñas ni información personal de participantes.
+## Video pendiente
+
+Cuando el equipo publique la grabación, debe pegar su URL en `videoUrl` dentro de `docs/configuracion.js` y publicar ese cambio. La página `demostracion.html` mostrará el reproductor. Hasta entonces, indica expresamente que el video está pendiente.
+
+## Pruebas del modelo
+
+Opcional para desarrollo, con Node.js instalado:
+
+```bash
+node pruebas/modelo.test.cjs
+```
+
+Este comando no inicia un servidor. Las pruebas de lógica no sustituyen las pruebas de navegador ni la comprobación de la web publicada.
